@@ -17,10 +17,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     LinearLayout mlinearLayout_list;
 
-    Button mBtnAccelerometer, mBtnLight, btnBarometer;
+    Button mBtnAccelerometer, mBtnLight, mBtnBarometer, mBtnCompass;
     /*TextView mTxtAccel;
     TextView mThermometer;
-    TextView mCompass;
     TextView mLight;
     TextView mBarometer;
     TextView mProximity; */
@@ -61,13 +60,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnBarometer = findViewById(R.id.btn_barometer);
-        btnBarometer.setOnClickListener(new View.OnClickListener() {
+        mBtnBarometer = findViewById(R.id.btn_barometer);
+        mBtnBarometer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
                 Intent baromIntent = new Intent(MainActivity.this,
                         BarometerActivity.class);
                 startActivity(baromIntent);
+            }
+        });
+
+        mBtnCompass = findViewById(R.id.btn_compass);
+        mBtnCompass.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                Intent compassIntent = new Intent(MainActivity.this,
+                        CompassActivity.class);
+                startActivity(compassIntent);
             }
         });
 
