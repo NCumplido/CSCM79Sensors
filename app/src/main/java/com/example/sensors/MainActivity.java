@@ -17,7 +17,12 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     LinearLayout mlinearLayout_list;
 
-    Button mBtnAccelerometer, mBtnLight, mBtnBarometer, mBtnCompass, mBtnSensorTest;
+    Button mBtnAccelerometer,
+            mBtnLight,
+            mBtnBarometer,
+            mBtnCompass,
+            mBtnSensorTest,
+            mbtnGestureDetect;
 
     SensorManager mSensorManager;
 
@@ -82,6 +87,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent sensorTestIntent = new Intent(MainActivity.this,
                         SensorTest.class);
                 startActivity(sensorTestIntent);
+            }
+        });
+
+        mbtnGestureDetect = findViewById(R.id.btn_gesture_detect);
+        mbtnGestureDetect.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                Intent mbtnGestureDetectIntent = new Intent(MainActivity.this,
+                        SensorTest.class);
+                startActivity(Gesture);
             }
         });
 
