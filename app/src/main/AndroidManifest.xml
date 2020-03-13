@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SensorTest"></activity>
+        <activity android:name=".GestureDetectactivity"></activity>
+        <activity android:name=".SensorTest" />
         <activity android:name=".CompassActivity" />
         <activity android:name=".BarometerActivity" />
         <activity android:name=".LightActivity" />

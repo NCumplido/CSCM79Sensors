@@ -95,13 +95,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 Intent mbtnGestureDetectIntent = new Intent(MainActivity.this,
-                        SensorTest.class);
-                startActivity(Gesture);
+                        GestureDetectactivity.class);
+                startActivity(mbtnGestureDetectIntent);
             }
         });
-
-
-
 
         /*mlinearLayout_list = findViewById(R.id.lin_lay_txt);
 
