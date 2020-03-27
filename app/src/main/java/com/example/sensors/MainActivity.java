@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mBtnCompass = findViewById(R.id.btn_compass);
+    /*    mBtnCompass = findViewById(R.id.btn_compass);
         mBtnCompass.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(compassIntent);
             }
         });
+
+     */
 
         mBtnSensorTest = findViewById(R.id.btn_sensor_test);
         mBtnSensorTest.setOnClickListener(new View.OnClickListener() {
