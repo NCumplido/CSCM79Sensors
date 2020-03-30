@@ -12,33 +12,36 @@ import android.widget.TextView;
 
 public class StepCounterActivity extends AppCompatActivity  implements SensorEventListener{
 
-    private SensorManager msensorManager;
-    private Sensor mSensorStepCounter;
-
     TextView txtStepValue;
-
-    //public static final int TYPE_STEP_COUNTER;
-   // public static final int TYPE_STEP_DETECTOR;
+    public int stepCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_counter);
 
+        stepCount =0;
         txtStepValue = findViewById(R.id.txt_step_value);
 
-        msensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        SensorManager mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        mSensorStepCounter = msensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        msensorManager.registerListener((SensorEventListener) this, mSensorStepCounter, SensorManager.SENSOR_DELAY_UI);
+        Sensor mSensorStepCounter = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        mSensorManager.registerListener((SensorEventListener) this, mSensorStepCounter, SensorManager.SENSOR_DELAY_UI);
 
+        mSensorManager.registerListener(this, mSensorStepCounter,
+                SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(event.sensor.getType() == Sensor.TYPE_LIGHT){
-            txtStepValue.setText("Steps: " + event.values[0]);
-        }
+        txtStepValue.setText(String.valueOf(event.values[0]));
+        /*if(event.sensor.getType() == Sensor.TYPE_STEP_COUNTER){
+            //Only works with stepDetector
+            //stepCount++;
+            //txtStepValue.setText(stepCount);
+            txtStepValue.setText(String.valueOf(event.values[0]));
+        }*/
+
     }
 
     @Override

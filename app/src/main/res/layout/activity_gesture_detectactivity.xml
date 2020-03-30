@@ -25,11 +25,12 @@
         android:textSize="40sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnFlick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Button" />
+        android:text="Flick"
+        android:textSize="40sp" />
 
     <Button
         android:id="@+id/button3"

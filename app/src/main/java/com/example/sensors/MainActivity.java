@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
             mBtnBarometer,
             mBtnCompass,
             mBtnSensorTest,
-            mbtnGestureDetect;
+            mbtnGestureDetect,
+            mBtnStepCounter;
 
     SensorManager mSensorManager;
 
@@ -67,6 +68,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent baromIntent = new Intent(MainActivity.this,
                         BarometerActivity.class);
                 startActivity(baromIntent);
+            }
+        });
+
+        mBtnStepCounter = findViewById(R.id.btnStepCounter);
+        mBtnStepCounter.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                Intent stepCounterIntent = new Intent(MainActivity.this,
+                        StepCounterActivity.class);
+                startActivity(stepCounterIntent);
             }
         });
 
