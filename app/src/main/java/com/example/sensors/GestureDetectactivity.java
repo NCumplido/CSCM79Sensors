@@ -31,6 +31,7 @@ public class GestureDetectactivity extends AppCompatActivity  implements SensorE
 
     private SensorManager msensorManager;
     private Sensor mSensorAccel;
+    private Sensor mSensorOrientation;
     private long lastUpdate = 0;
     private float m_ZFlickThreshold = 10;
     private TextView m_txtIsComplete;
@@ -47,9 +48,14 @@ public class GestureDetectactivity extends AppCompatActivity  implements SensorE
         m_txtIsComplete = findViewById(R.id.txt_is_complete);
 
         msensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
         //linear acceleration = acceleration - acceleration due to gravity
         mSensorAccel = msensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         msensorManager.registerListener(this, mSensorAccel, SensorManager.SENSOR_DELAY_NORMAL);
+
+        msensorManager.registerListener(this,
+                msensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
+                msensorManager.SENSOR_DELAY_GAME);
 
         m_btnFlick = findViewById(R.id.btnFlick);
         m_btnFlick.setOnClickListener(new View.OnClickListener() {
@@ -73,34 +79,24 @@ public class GestureDetectactivity extends AppCompatActivity  implements SensorE
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        /*if(sensorEvent.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION){
-            float x = sensorEvent.values[0];
-            float y = sensorEvent.values[1];
-
-            if(z>m_ZFlickThreshold){
-                //m_txtIsComplete.setProgress(100);
-                m_txtIsComplete.setText("Action complete");
-            }
-        } */
 
         synchronized (this) {
             switch (sensorEvent.sensor.getType()){
+
                 case Sensor.TYPE_LINEAR_ACCELERATION:
+
                     float z = sensorEvent.values[2];
                     if(z>m_ZFlickThreshold){
-                        //m_txtIsComplete.setProgress(100);
                         m_txtIsComplete.setText("Flick complete");
                     }
                     break;
-                /*case Sensor.TYPE_ACCELEROMETER:
-                    outputX.setText("Accelerationx:"+Float.toString(event.values[0]));
-                    outputY.setText("Accelerationy:"+Float.toString(event.values[1]));
-                    outputZ.setText("Accelerationz:"+Float.toString(event.values[2]));
-                    break;*/
+
                 case Sensor.TYPE_ORIENTATION:
                     orientx = sensorEvent.values[0];
                     orienty = sensorEvent.values[1];
                     orientz = sensorEvent.values[2];
+
+                    //m_txtIsComplete.setText("Orientationx:"+Float.toString(sensorEvent.values[0]));
 
                     if ( orientx > 60 && 70 > orientx){
                         m_txtIsComplete.setText("Rotated right complete");
@@ -109,16 +105,8 @@ public class GestureDetectactivity extends AppCompatActivity  implements SensorE
                     {
                         m_txtIsComplete.setText("Rotated left complete");
                     }
-
-                    /*outputX2.setText("Orientationx:"+Float.toString(event.values[0]));
-                    outputY2.setText("Orientationy:"+Float.toString(event.values[1]));
-                    outputZ2.setText("Orientationz:"+Float.toString(event.values[2])); */
-
-                    break;
             }
         }
-
-
 
     }
 
