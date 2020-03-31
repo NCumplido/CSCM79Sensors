@@ -70,6 +70,11 @@ public class SensorTest extends Activity implements SensorEventListener {
                     break;
             }
         }
+
+        /*Sensor.TYPE_ROTATION_VECTOR;
+        Sensor.TYPE_GAME_ROTATION_VECTOR;
+        Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR; */
+
     }
 
     @Override

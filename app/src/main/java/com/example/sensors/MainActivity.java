@@ -14,6 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*
+In summary, videos must be MP4, less than five minutes and 100 MB, and in 1920×1080 (1080p) resolution.
+http://chi2019.acm.org/guide-to-a-successful-video-submission/
+ */
 public class MainActivity extends AppCompatActivity {
     LinearLayout mlinearLayout_list;
 
@@ -81,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    /*    mBtnCompass = findViewById(R.id.btn_compass);
+       /*mBtnCompass = findViewById(R.id.btn_compass);
         mBtnCompass.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
@@ -89,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
                         CompassActivity.class);
                 startActivity(compassIntent);
             }
-        });
+        });*/
 
-     */
+
 
         mBtnSensorTest = findViewById(R.id.btn_sensor_test);
         mBtnSensorTest.setOnClickListener(new View.OnClickListener() {
