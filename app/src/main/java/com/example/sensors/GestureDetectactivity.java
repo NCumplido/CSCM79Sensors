@@ -32,7 +32,6 @@ public class GestureDetectactivity extends AppCompatActivity  implements SensorE
     private SensorManager msensorManager;
     private Sensor mSensorAccel;
     private Sensor mSensorOrientation;
-    private long lastUpdate = 0;
     private float m_ZFlickThreshold = 10;
     private TextView m_txtIsComplete;
 
@@ -105,6 +104,11 @@ public class GestureDetectactivity extends AppCompatActivity  implements SensorE
                     {
                         m_txtIsComplete.setText("Rotated left complete");
                     }
+                    else if (orienty <-10 && orienty > -40)
+                    {
+                        m_txtIsComplete.setText("Rotated forward complete");
+                    }
+
             }
         }
 
