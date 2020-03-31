@@ -15,8 +15,10 @@ public class AccelActivity extends AppCompatActivity implements SensorEventListe
     private SensorManager msensorManager;
     private Sensor mSensorAccel;
     private long lastUpdate = 0;
+    float highestZ = 0;
 
-    TextView mtxtView_Accel;
+    TextView mtxtView_Accel,
+             mtxt_highestZ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +26,12 @@ public class AccelActivity extends AppCompatActivity implements SensorEventListe
         setContentView(R.layout.activity_accel);
 
         mtxtView_Accel = findViewById(R.id.txt_accel);
+        mtxt_highestZ = findViewById(R.id.txt_highest_Z);
 
         msensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //linear acceleration = acceleration - acceleration due to gravity
         mSensorAccel = msensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
-        msensorManager.registerListener(this, mSensorAccel, SensorManager.SENSOR_DELAY_UI);
+        msensorManager.registerListener(this, mSensorAccel, SensorManager.SENSOR_DELAY_NORMAL);
 
     }
 
@@ -40,6 +43,11 @@ public class AccelActivity extends AppCompatActivity implements SensorEventListe
         float y = sensorEvent.values[1];
         float z = sensorEvent.values[2];
 
+        if(z>highestZ){
+            highestZ = z;
+        }
+
+        mtxt_highestZ.setText("Highest z: " + highestZ);
         mtxtView_Accel.setText("x: " + (int) x + " y: " + (int) y + " z: " + (int) z);
         /*if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float x = sensorEvent.values[0];
