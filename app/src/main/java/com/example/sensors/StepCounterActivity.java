@@ -24,6 +24,8 @@ public class StepCounterActivity extends AppCompatActivity  implements SensorEve
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_counter);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         stepCount =0;
         txtStepValue = findViewById(R.id.txt_step_value);
         btnReset = findViewById(R.id.btn_reset);
